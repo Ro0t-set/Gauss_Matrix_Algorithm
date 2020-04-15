@@ -1,6 +1,8 @@
 import numpy as np
 from fractions import Fraction
 
+##########now only works with square matrices############
+
 class Matritce():
     def __init__(self, matrice, risultati, row, column):
         self.matrice = matrice
@@ -9,10 +11,9 @@ class Matritce():
         self.column = column
 
     def PrintMareix(self):
-        print("\n\n",self.matrice,"\n risultati: ",self.risultati, "\n or \n\n")
-        print('\n__________________________________________\n')
+        print(self.matrice,"\n results: ",self.risultati, "\n\n")
 
-    def forse_mi_serve(self):
+    def forse_mi_serve___testing____(self):
         for matriceX in self.matrice:
             print('\n- - - - - - - - - - - - - -')
             for numero in matriceX:
@@ -39,12 +40,13 @@ class Matritce():
         self.risultati = np.array(risultati, float).reshape(C)
         self.column = C
         self.row = R
+        print("Inserted Matrix:")
         self.PrintMareix(self)
 
     def MakeScala(self):
         k=0
         for i in range(0, (self.row)-1):
-            numeratore = self.matrice[i,k] # selezione di numeri in diagonale
+            numeratore = self.matrice[i,k] # diagonal selection
             k = k + 1
             for j in range(k, (self.row)):
                 denominatore = self.matrice[j, i]
@@ -54,10 +56,11 @@ class Matritce():
                 for r in range(0, self.column):
                     self.matrice[j, r] =  ( self.matrice[j, r] * (numeratore/denominatore))
                     self.matrice[j , r] =  self.matrice[i,r] - self.matrice[j, r]
+        print("OUTPUT:")
         self.PrintMareix(self)
 
 
-
+#Testing
 # matrice=([3,-2,5,0],
 #          [4,5,8,1],
 #          [1,1,2,1],
@@ -66,7 +69,9 @@ class Matritce():
 # Matritce.risultati=[2,4,5,7]
 # Matritce.row= 4
 # Matritce.column=4
-Matritce.PrintMareix(Matritce)
+# Matritce.PrintMareix(Matritce)
 
+# 1 -1 0 1 2 0 0 6 -4
+
+Matritce.InserisciDati(Matritce)
 Matritce.MakeScala(Matritce)
-
